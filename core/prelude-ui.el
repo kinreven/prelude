@@ -40,12 +40,20 @@
   (tool-bar-mode -1))
 
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
+
+(tooltip-mode -1)
 
 ;; the blinking cursor is nothing, but an annoyance
 (blink-cursor-mode -1)
 
 ;; disable startup screen
 (setq inhibit-startup-screen t)
+(setq inhibit-startup-message t)
+(setq initial-scratch-message t)
+
+(setq use-file-dialog nil)
+(setq use-dialog-box nil)
 
 ;; nice scrolling
 (setq scroll-margin 0
@@ -59,6 +67,8 @@
 
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
+
+(setq ring-bell-function 'ignore)
 
 ;; more useful frame title, that show either a file or a
 ;; buffer name (if the buffer isn't visiting a file)
