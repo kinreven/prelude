@@ -118,6 +118,22 @@
 (global-set-key (kbd "s->") 'ace-jump-buffer)
 (global-set-key (kbd "s-w") 'ace-window)
 
+;; Windows move up/down 
+(defun window-move-up (&optional arg) 
+"Current window move-up 3 lines." 
+(interactive "P") 
+(if arg 
+(scroll-up arg) 
+(scroll-up 3))) 
+(defun window-move-down (&optional arg) 
+"Current window move-down 3 lines." 
+(interactive "P") 
+(if arg 
+(scroll-down arg) 
+(scroll-down 3))) 
+(global-set-key (kbd "M-n") 'window-move-up) 
+(global-set-key (kbd "M-p") 'window-move-down) 
+
 (provide 'prelude-global-keybindings)
 
 ;;; prelude-global-keybindings.el ends here
