@@ -52,6 +52,7 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message t)
 
+;; no system dialog and box
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
 
@@ -68,14 +69,15 @@
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; ignore ring bell
 (setq ring-bell-function 'ignore)
 
 ;; more useful frame title, that show either a file or a
 ;; buffer name (if the buffer isn't visiting a file)
 (setq frame-title-format
-      '("" invocation-name " Prelude - " (:eval (if (buffer-file-name)
-                                            (abbreviate-file-name (buffer-file-name))
-                                          "%b"))))
+      '( (:eval (if (buffer-file-name)
+                        (abbreviate-file-name (buffer-file-name))
+                             "%b"))))
 
 ;; use zenburn as the default theme
 (load-theme prelude-theme t)
