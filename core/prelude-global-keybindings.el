@@ -140,7 +140,8 @@
 
 ;; Files
 (global-set-key (kbd "C-x f") 'helm-find-files)
-(global-set-key (kbd "C-x c") 'save-buffers-kill-emacs)
+(global-set-key (kbd "C-x s") 'save-buffer)
+(global-set-key (kbd "C-x C-s") 'save-some-buffers)
 
 ;; Set Mark
 (global-set-key (kbd "C-l") 'set-mark-command)
