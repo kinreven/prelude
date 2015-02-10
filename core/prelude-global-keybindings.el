@@ -134,6 +134,26 @@
 (global-set-key (kbd "M-n") 'window-move-up) 
 (global-set-key (kbd "M-p") 'window-move-down) 
 
+;; Undo Tree
+(global-set-key (kbd "C-u") 'undo-tree-undo)
+(global-set-key (kbd "M-u") 'undo-tree-redo)
+
+;; Files
+(global-set-key (kbd "C-x f") 'helm-find-files)
+(global-set-key (kbd "C-x c") 'save-buffers-kill-emacs)
+
+;; Set Mark
+(global-set-key (kbd "C-l") 'set-mark-command)
+(global-set-key (kbd "M-l") 'set-mark-command)
+
+;; Mark region
+(defun mark-current-line ()
+  "Select the current line"
+  (interactive)
+  (end-of-line)
+  (set-mark (line-beginning-position)))
+(global-set-key (kbd "C-x l") 'mark-current-line)
+
 (provide 'prelude-global-keybindings)
 
 ;;; prelude-global-keybindings.el ends here
