@@ -119,20 +119,25 @@
 (global-set-key (kbd "s-w") 'ace-window)
 
 ;; Windows move up/down 
-(defun window-move-up (&optional arg) 
-"Current window move-up 3 lines." 
-(interactive "P") 
-(if arg 
-(scroll-up arg) 
-(scroll-up 3))) 
-(defun window-move-down (&optional arg) 
-"Current window move-down 3 lines." 
-(interactive "P") 
-(if arg 
-(scroll-down arg) 
-(scroll-down 3))) 
-(global-set-key (kbd "M-n") 'window-move-up) 
-(global-set-key (kbd "M-p") 'window-move-down) 
+(defun hold-line-scroll-up()
+ "Scroll the page with the cursor in the same line"
+ (interactive)
+ (let ((next-screen-context-lines
+ (count-lines
+ (window-start) (window-end))))
+ (scroll-up)))
+ (global-set-key (kbd "M-n") 'hold-line-scroll-up)
+
+(defun hold-line-scroll-down()
+ "Scroll the page with the cursor in the same line"
+ (interactive)
+ (let ((next-screen-context-lines
+ (count-lines
+ (window-start) (window-end))))
+ (scroll-down)))
+ (global-set-key (kbd "M-p") 'hold-line-scroll-down)
+
+
 
 ;; Undo Tree
 (global-set-key (kbd "C-u") 'undo-tree-undo)
@@ -145,7 +150,7 @@
 
 ;; Set Mark
 (global-set-key (kbd "C-l") 'set-mark-command)
-(global-set-key (kbd "M-l") 'set-mark-command)
+(global-set-key (kbd "M-l") 'cua-rectangle-mark-mode)
 
 ;; Mark region
 (defun mark-current-line ()
