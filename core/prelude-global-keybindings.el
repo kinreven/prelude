@@ -137,8 +137,6 @@
  (scroll-down)))
  (global-set-key (kbd "M-p") 'hold-line-scroll-down)
 
-
-
 ;; Undo Tree
 (global-set-key (kbd "C-u") 'undo-tree-undo)
 (global-set-key (kbd "M-u") 'undo-tree-redo)
@@ -159,6 +157,10 @@
   (end-of-line)
   (set-mark (line-beginning-position)))
 (global-set-key (kbd "C-x l") 'mark-current-line)
+
+;; Sliver Searcher
+(global-set-key (kbd "M-g .") 'helm-ag)
+(global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 
 (provide 'prelude-global-keybindings)
 
