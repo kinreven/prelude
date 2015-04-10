@@ -10,3 +10,6 @@
 (setq projectile-generic-command "find . -type f -not -name '*.o' -not -name '*.d' -not -name '*.cmd' -print0")
 
 (global-set-key (kbd "C-x c") 'save-buffers-kill-emacs)
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (flet ((process-list ())) ad-do-it))
