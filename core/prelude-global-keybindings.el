@@ -142,7 +142,7 @@
 (global-set-key (kbd "M-u") 'undo-tree-redo)
 
 ;; Files
-(global-set-key (kbd "C-x f") 'helm-find-files)
+(global-set-key (kbd "C-x f") 'ido-find-files)
 (global-set-key (kbd "C-x s") 'save-buffer)
 (global-set-key (kbd "C-x C-s") 'save-some-buffers)
 
