@@ -152,11 +152,39 @@
 
 ;; Mark region
 (defun mark-current-line ()
-  "Select the current line"
+  "Select the current line."
   (interactive)
   (end-of-line)
   (set-mark (line-beginning-position)))
 (global-set-key (kbd "C-x l") 'mark-current-line)
+
+(defun mark-current-word ()
+"Select the word under cursor.
+word here is considered any alphanumeric sequence with _ or - ."
+ (interactive)
+ (let (pt)
+   (skip-chars-backward "-_A-Za-z0-9")
+   (setq pt (point))
+   (skip-chars-forward "-_A-Za-z0-9")
+   (set-mark pt)
+ ))
+(global-set-key (kbd "C-x m") 'mark-current-word)
+
+(defun mark-current-block ()
+  "Select the current block of text between blank lines."
+  (interactive)
+  (let (p1 p2)
+    (progn
+      (if (re-search-backward "\n[ \t]*\n" nil "move")
+          (progn (re-search-forward "\n[ \t]*\n")
+                 (setq p1 (point)))
+        (setq p1 (point)))
+      (if (re-search-forward "\n[ \t]*\n" nil "move")
+          (progn (re-search-backward "\n[ \t]*\n")
+                 (setq p2 (point)))
+        (setq p2 (point))))
+    (set-mark p1)))
+(global-set-key (kbd "C-x p") 'mark-current-block)
 
 ;; Sliver Searcher
 (global-set-key (kbd "M-g .") 'helm-ag)
